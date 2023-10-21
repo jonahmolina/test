@@ -25,8 +25,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/login', 'AuthController@login'); 
-
 Route::middleware(['auth'])->group(function() {
 
     Route::resource('artists', ArtistController::class);
