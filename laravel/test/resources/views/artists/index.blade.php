@@ -25,6 +25,7 @@
                                 <td>{{ $artist->name }}</td>
                                 <td>{{ $artist->code }}</td>
                                 <td>
+                                    <a href="{{ route('artists.show', $artist->id) }}" class="btn btn-info btn-sm">View</a>
                                     <a href="{{ route('artists.edit', $artist->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                     <form action="{{ route('artists.destroy', $artist->id) }}" method="POST" style="display: inline-block">
                                         @csrf
@@ -40,6 +41,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $artists->links() }}
                 </div>
             </div>
         </div>

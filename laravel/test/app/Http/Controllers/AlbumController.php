@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
 
 class AlbumController extends Controller
 {
@@ -52,8 +54,9 @@ class AlbumController extends Controller
     public function show(string $id)
     {
         $album = Album::findOrFail($id);
+        $artist = Artist::findOrFail($album->artist_id);
 
-        return view('albums.show', compact('album'));
+        return view('albums.show', compact('album','artist'));
     }
 
     /**
@@ -62,8 +65,9 @@ class AlbumController extends Controller
     public function edit(string $id)
     {
         $album = Album::findOrFail($id);
+        $artists = Artist::all();
 
-        return view('albums.edit', compact('album'));
+        return view('albums.edit', compact('album','artists'));
     }
 
     /**
